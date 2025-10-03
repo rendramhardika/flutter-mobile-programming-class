@@ -4,13 +4,7 @@ This repository contains multiple Flutter projects created as part of a mobile p
 
 ## Repository Structure
 
-- `projects/` - Contains all Flutter projects organized by topic or week
-  - `project_01/` - Basic Flutter UI elements
-  - `project_02/` - State management
-  - `project_03/` - Navigation and routing
-  - And more...
 - `dart_prog/` - Dart programming examples and exercises
-- `resources/` - Shared resources, assets, and documentation
 
 ## Getting Started
 
