@@ -1,0 +1,462 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+class CupertinoGuidelinesScreen extends StatefulWidget {
+  const CupertinoGuidelinesScreen({super.key});
+
+  @override
+  State<CupertinoGuidelinesScreen> createState() => _CupertinoGuidelinesScreenState();
+}
+
+class _CupertinoGuidelinesScreenState extends State<CupertinoGuidelinesScreen> {
+  bool _switchValue = false;
+  bool _checkboxValue = false;
+  double _sliderValue = 0.5;
+  final TextEditingController _textController = TextEditingController();
+  final List<String> _items = List.generate(5, (index) => 'Item ${index + 1}');
+  int _selectedSegment = 0;
+  
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Set system UI overlay style for iOS (status bar)
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
+
+    return CupertinoPageScaffold(
+      backgroundColor: CupertinoColors.systemGroupedBackground,
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('iOS Human Interface'),
+        backgroundColor: CupertinoColors.systemBackground,
+        border: null,
+      ),
+      child: SafeArea(
+        bottom: false,
+        child: CustomScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          slivers: [
+            // Segment Control
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: CupertinoSlidingSegmentedControl<int>(
+                  groupValue: _selectedSegment,
+                  onValueChanged: (int? value) {
+                    if (value != null) {
+                      setState(() {
+                        _selectedSegment = value;
+                      });
+                    }
+                  },
+                  children: const {
+                    0: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Text('Controls'),
+                    ),
+                    1: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Text('Lists'),
+                    ),
+                  },
+                ),
+              ),
+            ),
+            
+            // Content based on selected segment
+            if (_selectedSegment == 0) ...[              
+              // Toggle Controls Section
+              SliverToBoxAdapter(
+                child: CupertinoListSection.insetGrouped(
+                  header: const Text('TOGGLES'),
+                  footer: const Text('Toggle switches for binary settings'),
+                  children: [
+                    _buildSwitch(),
+                    _buildCheckbox(),
+                  ],
+                ),
+              ),
+              
+              // Slider Section
+              SliverToBoxAdapter(
+                child: CupertinoListSection.insetGrouped(
+                  header: const Text('SLIDER'),
+                  footer: const Text('Adjust values with precision'),
+                  children: [_buildSlider()],
+                ),
+              ),
+              
+              // Text Field Section
+              SliverToBoxAdapter(
+                child: CupertinoListSection.insetGrouped(
+                  header: const Text('TEXT INPUT'),
+                  footer: const Text('Enter text with iOS-style keyboards'),
+                  children: [_buildTextField()],
+                ),
+              ),
+              
+              // Buttons Section
+              SliverToBoxAdapter(
+                child: CupertinoListSection.insetGrouped(
+                  header: const Text('BUTTONS'),
+                  footer: const Text('Various button styles for iOS'),
+                  children: [_buildButtonsInList()],
+                ),
+              ),
+            ] else ...[              
+              // Card Example
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: _buildIOSStyleCard(),
+                ),
+              ),
+              
+              // List Section
+              SliverToBoxAdapter(
+                child: CupertinoListSection.insetGrouped(
+                  header: const Text('LIST ITEMS'),
+                  footer: const Text('Standard iOS list items with various styles'),
+                  children: _buildListItems(),
+                ),
+              ),
+            ],
+            
+            const SliverToBoxAdapter(
+              child: SizedBox(height: 24),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSwitch() {
+    return CupertinoListTile(
+      title: const Text('Switch'),
+      subtitle: const Text('Standard toggle switch'),
+      trailing: CupertinoSwitch(
+        value: _switchValue,
+        onChanged: (value) => setState(() => _switchValue = value),
+        activeColor: CupertinoColors.activeBlue,
+      ),
+      onTap: () => setState(() => _switchValue = !_switchValue),
+    );
+  }
+
+  Widget _buildCheckbox() {
+    return CupertinoListTile(
+      title: const Text('Checkbox'),
+      subtitle: const Text('iOS-style checkbox control'),
+      trailing: GestureDetector(
+        onTap: () => setState(() => _checkboxValue = !_checkboxValue),
+        child: Icon(
+          _checkboxValue
+              ? CupertinoIcons.checkmark_circle_fill
+              : CupertinoIcons.circle,
+          size: 28,
+          color: _checkboxValue
+              ? CupertinoColors.activeBlue
+              : CupertinoColors.systemGrey3,
+        ),
+      ),
+      onTap: () => setState(() => _checkboxValue = !_checkboxValue),
+    );
+  }
+
+  Widget _buildSlider() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Flexible(
+                  child: Text(
+                    'Adjust Value',
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  '${(_sliderValue * 100).toInt()}%',
+                  style: const TextStyle(
+                    color: CupertinoColors.secondaryLabel,
+                    fontSize: 15,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          CupertinoSlider(
+            value: _sliderValue,
+            onChanged: (value) => setState(() => _sliderValue = value),
+            activeColor: CupertinoColors.activeBlue,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTextField() {
+    return CupertinoTextField(
+      controller: _textController,
+      placeholder: 'Type something...',
+      prefix: const Padding(
+        padding: EdgeInsets.only(left: 8.0),
+        child: Icon(CupertinoIcons.search, size: 20, color: CupertinoColors.secondaryLabel),
+      ),
+      suffix: _textController.text.isNotEmpty
+          ? CupertinoButton(
+              padding: EdgeInsets.zero,
+              minSize: 0,
+              onPressed: () {
+                _textController.clear();
+                setState(() {});
+              },
+              child: const Icon(CupertinoIcons.clear_circled_solid, 
+                size: 20, 
+                color: CupertinoColors.tertiaryLabel,
+              ),
+            )
+          : null,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      decoration: BoxDecoration(
+        color: CupertinoColors.tertiarySystemFill,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      style: const TextStyle(fontSize: 16),
+      onChanged: (_) => setState(() {}),
+    );
+  }
+
+  List<Widget> _buildListItems() {
+    final List<Widget> items = [];
+    
+    for (int i = 0; i < _items.length; i++) {
+      items.add(
+        CupertinoListTile(
+          leading: Container(
+            width: 36,
+            height: 36,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: CupertinoColors.activeBlue.withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: Text(
+              '${i + 1}',
+              style: const TextStyle(
+                color: CupertinoColors.activeBlue,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          title: Text(_items[i]),
+          subtitle: Text(
+            'Description for ${_items[i]}',
+            style: const TextStyle(
+              color: CupertinoColors.secondaryLabel,
+              fontSize: 14,
+            ),
+          ),
+          trailing: const Icon(
+            CupertinoIcons.chevron_right,
+            size: 16,
+            color: CupertinoColors.tertiaryLabel,
+          ),
+          onTap: () {},
+        ),
+      );
+      
+      // Add divider between items, but not after the last one
+      if (i < _items.length - 1) {
+        items.add(const Divider(height: 1, indent: 56));
+      }
+    }
+    
+    return items;
+  }
+
+  Widget _buildIOSStyleCard() {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 16),
+      decoration: BoxDecoration(
+        color: CupertinoColors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: CupertinoColors.systemGrey.withOpacity(0.1),
+            blurRadius: 5,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // iOS Style Navigation Bar
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {},
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(
+                      color: CupertinoColors.activeBlue,
+                      fontSize: 17,
+                    ),
+                  ),
+                ),
+                const Text(
+                  'iOS App',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: const Text(
+                    'Edit',
+                    style: TextStyle(
+                      color: CupertinoColors.activeBlue,
+                      fontSize: 17,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          
+          const Divider(height: 1, thickness: 0.5),
+          
+          // List Item
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+            child: Row(
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: const BoxDecoration(
+                    color: CupertinoColors.systemGrey5,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    CupertinoIcons.person_fill,
+                    color: CupertinoColors.systemGrey,
+                    size: 20,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                const Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'List Item',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      SizedBox(height: 2),
+                      Text(
+                        'Secondary text',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: CupertinoColors.secondaryLabel,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(
+                  CupertinoIcons.checkmark,
+                  color: CupertinoColors.activeBlue,
+                  size: 22,
+                ),
+              ],
+            ),
+          ),
+          
+          // iOS Style Button
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: CupertinoButton(
+              onPressed: () {},
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              borderRadius: BorderRadius.circular(10),
+              color: CupertinoColors.activeBlue,
+              pressedOpacity: 0.8,
+              child: const Text(
+                'Continue',
+                style: TextStyle(
+                  color: CupertinoColors.white,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildButtonsInList() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        // Primary Button
+        CupertinoButton(
+          onPressed: () {},
+          color: CupertinoColors.activeBlue,
+          borderRadius: BorderRadius.circular(10),
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          child: const Text('Primary Button'),
+        ),
+        const SizedBox(height: 12),
+        
+        // Secondary Button
+        CupertinoButton(
+          onPressed: () {},
+          color: CupertinoColors.systemGrey6,
+          borderRadius: BorderRadius.circular(10),
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          child: Text(
+            'Secondary Button',
+            style: TextStyle(color: CupertinoColors.label),
+          ),
+        ),
+        const SizedBox(height: 12),
+        
+        // Text Button
+        CupertinoButton(
+          onPressed: () {},
+          padding: EdgeInsets.zero,
+          child: const Text('Text Button'),
+        ),
+      ],
+    );
+  }
+
+}
