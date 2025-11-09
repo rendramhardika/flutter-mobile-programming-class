@@ -12,6 +12,13 @@ Repositori ini berisi kumpulan proyek Flutter yang dibuat sebagai bagian dari ke
   - Microinteractions & Feedback
   - Aksesibilitas & Desain Inklusif
   - Gamifikasi
+- `layoutmobile/` - Koleksi contoh tata letak dan pola UI Flutter
+  - Tata Letak Dasar
+  - Transisi dan Animasi
+  - Daftar & Grid
+  - Tata Letak Kanonik
+  - RecyclerView
+  - Timeline Instagram
 
 ## 🛠️ Persyaratan Sistem
 
@@ -64,14 +71,16 @@ Kumpulan contoh dan latihan pemrograman dasar Dart.
 - Collection dan null safety
 - Asynchronous programming
 
-## 🤝 Kontribusi
+### 🖼️ Flutter Layout Examples (`layoutmobile/`)
+Koleksi komprehensif contoh tata letak Flutter dan pola UI.
 
-Kontribusi untuk proyek ini sangat diterima! Jika Anda ingin berkontribusi, silakan:
-1. Fork repositori ini
-2. Buat branch fitur baru (`git checkout -b fitur/namafitur`)
-3. Commit perubahan Anda (`git commit -m 'Menambahkan fitur baru'`)
-4. Push ke branch (`git push origin fitur/namafitur`)
-5. Buat Pull Request
+**Fitur Utama:**
+- Implementasi widget tata letak dasar (Row, Column, Stack, dll.)
+- Animasi transisi dan perubahan tata letak
+- Daftar, grid, dan tampilan yang dapat di-scroll
+- Pola tata letak umum (canonical layouts)
+- Optimasi performa untuk daftar panjang
+- Contoh dunia nyata (Instagram timeline)
 
 ## 📄 Lisensi
 
