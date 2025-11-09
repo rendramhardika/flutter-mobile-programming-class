@@ -1,31 +1,84 @@
-# Flutter Mobile Programming Class
+# 🚀 Flutter Mobile Programming Class
 
-This repository contains multiple Flutter projects created as part of a mobile programming class. Each subfolder represents a separate Flutter project focusing on different concepts and applications.
+Repositori ini berisi kumpulan proyek Flutter yang dibuat sebagai bagian dari kelas pemrograman mobile. Setiap subfolder mewakili proyek Flutter terpisah yang fokus pada konsep dan aplikasi yang berbeda.
 
-## Repository Structure
+## 📁 Struktur Repositori
 
-- `dart_prog/` - Dart programming examples and exercises
+- `dart_prog/` - Contoh dan latihan pemrograman Dart
+- `uiux/` - Demonstrasi prinsip dan pola UI/UX dalam pengembangan aplikasi mobile
+  - Prinsip Desain Visual
+  - Panduan Platform (Android/iOS)
+  - Pola Navigasi Mobile
+  - Microinteractions & Feedback
+  - Aksesibilitas & Desain Inklusif
+  - Gamifikasi
 
-## Getting Started
+## 🛠️ Persyaratan Sistem
 
-1. Make sure you have Flutter installed. If not, follow the [official installation guide](https://docs.flutter.dev/get-started/install).
-2. Clone this repository:
-   ```
+- Flutter SDK (versi terbaru direkomendasikan)
+- Dart SDK (versi 3.9.0 atau lebih tinggi)
+- Android Studio atau VS Code dengan ekstensi Flutter
+- Emulator atau perangkat fisik Android/iOS untuk pengujian
+- Git (untuk mengelola versi kode)
+
+## 🚀 Memulai
+
+1. Pastikan Flutter sudah terinstall di sistem Anda. Jika belum, ikuti [panduan instalasi resmi](https://docs.flutter.dev/get-started/install).
+2. Clone repositori ini:
+   ```bash
    git clone https://github.com/rendramhardika/flutter-mobile-programming-class.git
    ```
-3. Navigate to any project folder and run:
+3. Masuk ke direktori proyek yang diinginkan, contoh:
+   ```bash
+   cd uiux
    ```
+4. Dapatkan dependencies yang dibutuhkan:
+   ```bash
    flutter pub get
+   ```
+5. Jalankan aplikasi:
+   ```bash
    flutter run
    ```
 
-## Requirements
+## 📚 Proyek yang Tersedia
 
-- Flutter SDK (latest stable version recommended)
-- Dart SDK
-- Android Studio or VS Code with Flutter extensions
-- Android/iOS emulator or physical device for testing
+### 🎨 UI/UX Demo (`uiux/`)
+Aplikasi demonstrasi yang menampilkan berbagai prinsip dan pola UI/UX dalam pengembangan aplikasi mobile.
 
-## License
+**Fitur Utama:**
+- Prinsip Desain Visual
+- Panduan Platform (Android/iOS)
+- Pola Navigasi Mobile
+- Microinteractions & Feedback
+- Aksesibilitas & Desain Inklusif
+- Gamifikasi
 
-This repository is for educational purposes.
+### ➗ Dart Programming (`dart_prog/`)
+Kumpulan contoh dan latihan pemrograman dasar Dart.
+
+**Topik yang Dicakup:**
+- Dasar-dasar sintaks Dart
+- Control flow dan fungsi
+- OOP dalam Dart
+- Collection dan null safety
+- Asynchronous programming
+
+## 🤝 Kontribusi
+
+Kontribusi untuk proyek ini sangat diterima! Jika Anda ingin berkontribusi, silakan:
+1. Fork repositori ini
+2. Buat branch fitur baru (`git checkout -b fitur/namafitur`)
+3. Commit perubahan Anda (`git commit -m 'Menambahkan fitur baru'`)
+4. Push ke branch (`git push origin fitur/namafitur`)
+5. Buat Pull Request
+
+## 📄 Lisensi
+
+Proyek ini menggunakan lisensi MIT. Lihat file [LICENSE](LICENSE) untuk detail.
+
+---
+
+**Selamat Belajar! 🚀**
+
+Mulai perjalanan Anda dalam pengembangan aplikasi mobile dengan Flutter!
