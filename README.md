@@ -19,6 +19,12 @@ Repositori ini berisi kumpulan proyek Flutter yang dibuat sebagai bagian dari ke
   - Tata Letak Kanonik
   - RecyclerView
   - Timeline Instagram
+- `formflutter/` - Aplikasi manajemen tugas dengan form yang lengkap
+  - Autentikasi pengguna
+  - CRUD tugas
+  - Validasi form
+  - Notifikasi interaktif
+  - Tema gelap/terang
 
 ## 🛠️ Persyaratan Sistem
 
@@ -81,6 +87,17 @@ Koleksi komprehensif contoh tata letak Flutter dan pola UI.
 - Pola tata letak umum (canonical layouts)
 - Optimasi performa untuk daftar panjang
 - Contoh dunia nyata (Instagram timeline)
+
+### 📋 Form Flutter (`formflutter/`)
+Aplikasi manajemen tugas dengan implementasi form yang lengkap.
+
+**Fitur Utama:**
+- Sistem autentikasi dengan validasi
+- Manajemen tugas (tambah, edit, hapus, tandai selesai)
+- Validasi form yang kuat
+- Notifikasi interaktif dengan SweetAlert
+- Tampilan responsif dengan tema gelap/terang
+- Progress tracking untuk setiap tugas
 
 ## 📄 Lisensi
 
