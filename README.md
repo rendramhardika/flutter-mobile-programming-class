@@ -43,6 +43,12 @@ Repositori ini berisi kumpulan proyek Flutter yang dibuat sebagai bagian dari ke
   - SQLite local storage
   - REST API integration
   - Form handling dan validation
+- `notification/` - Push Notification dengan Firebase Cloud Messaging
+  - Firebase Cloud Messaging (FCM)
+  - Local notifications
+  - FCM token management
+  - Background & foreground handling
+  - Todo list dengan notifikasi otomatis
 
 ## 🛠️ Persyaratan Sistem
 
@@ -224,6 +230,71 @@ Aplikasi Flutter yang mendemonstrasikan implementasi CRUD dengan 2 metode penyim
 - Service pattern untuk business logic
 - Model classes dengan JSON serialization
 - Reusable widgets dan dialogs
+
+### 🔔 Push Notification Demo (`notification/`)
+Aplikasi Flutter yang mendemonstrasikan implementasi lengkap Firebase Cloud Messaging (FCM) dengan local notifications dan Todo List integration.
+
+**Fitur Utama:**
+
+1. **🔥 Firebase Cloud Messaging (FCM)**
+   - FCM token generation dan display
+   - Token refresh handling
+   - Push notification dari Firebase Console
+   - Push notification via FCM API
+   - Foreground & background message handling
+   - Notification tap/click handling
+
+2. **📲 Local Notifications**
+   - Local notification dengan custom channel
+   - Android notification channels
+   - iOS notification permissions
+   - Test notification button
+
+3. **📝 Todo List Demo**
+   - Create, read, update todo items
+   - Mark todo as done/pending
+   - Automatic notification saat task completed
+   - FCM API integration
+   - Real-time UI updates
+
+4. **🔐 Token Management**
+   - Display FCM token di UI
+   - Copy token untuk testing
+   - Submit token ke backend API
+   - Token refresh listener
+
+**Konsep yang Dipelajari:**
+- **Firebase Cloud Messaging**: Push notification dari server
+- **Local Notifications**: Notifikasi lokal dengan flutter_local_notifications
+- **FCM Token Management**: Mendapatkan dan mengelola device token
+- **Background & Foreground Handling**: Menangani notifikasi di berbagai app state
+- **Notification Channels**: Android notification channels
+- **API Integration**: Mengirim notifikasi via FCM API
+- **Real-world Use Case**: Todo list dengan notifikasi otomatis
+
+**Notification States:**
+- **Foreground**: App aktif → Show local notification
+- **Background**: App di background → System notification
+- **Terminated**: App closed → Handle on app start
+- **Notification Tap**: User tap → Navigate to page
+
+**Teknologi:**
+- `firebase_core: ^3.8.0` - Firebase core SDK
+- `firebase_messaging: ^15.1.6` - FCM push notifications
+- `flutter_local_notifications: ^17.2.3` - Local notification handling
+- `http: ^1.2.2` - HTTP requests untuk FCM API
+
+**Setup Requirements:**
+- Firebase project dengan Android/iOS app configured
+- google-services.json (Android) / GoogleService-Info.plist (iOS)
+- FCM Server Key untuk API integration
+- Physical device untuk full testing (simulator limited)
+
+**Testing Methods:**
+- Firebase Console test message
+- FCM API via cURL/Postman
+- Local notification button
+- Todo completion trigger
 
 ## 📄 Lisensi
 
