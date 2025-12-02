@@ -49,6 +49,12 @@ Repositori ini berisi kumpulan proyek Flutter yang dibuat sebagai bagian dari ke
   - FCM token management
   - Background & foreground handling
   - Todo list dengan notifikasi otomatis
+- `flutter_integration_demo/` - Integrasi API dan Maps dengan Flutter
+  - OpenStreetMap integration (6 interactive demos)
+  - Smart City Dashboard (Weather, AQI, News)
+  - Interactive map features (Markers, Polylines, Polygons, Circles)
+  - Multi-API integration
+  - Real-time environmental data
 
 ## 🛠️ Persyaratan Sistem
 
@@ -295,6 +301,84 @@ Aplikasi Flutter yang mendemonstrasikan implementasi lengkap Firebase Cloud Mess
 - FCM API via cURL/Postman
 - Local notification button
 - Todo completion trigger
+
+### 🗺️ Flutter Integration Demo (`flutter_integration_demo/`)
+Aplikasi Flutter yang mendemonstrasikan berbagai integrasi API dan library, meliputi OpenStreetMap integration dan Smart City Dashboard dengan multiple API integration.
+
+**Fitur Utama:**
+
+1. **🗺️ OpenStreetMap Integration (6 Interactive Demos)**
+   - **Basic Map**: Peta dasar dengan zoom & pan controls
+   - **Interactive Markers**: Tap peta untuk tambah marker dengan label custom
+   - **Interactive Polylines**: Drawing polylines dengan tap berurutan
+   - **Interactive Polygons**: Drawing polygons dengan minimal 3 points
+   - **Interactive Circle Markers**: Circle dengan radius custom
+   - **Custom Tiles**: Custom map styling dengan tile provider berbeda
+
+2. **🌿 Smart City Dashboard**
+   - **Weather Data**: Real-time cuaca dari OpenWeatherMap API
+   - **Air Quality Index**: AQI real-time dari WAQI API dengan color-coded indicator
+   - **Environmental News**: Berita lingkungan dari NewsAPI.org
+   - **Mini Map**: OpenStreetMap integration dengan auto-update
+   - **Location Picker**: Manual input atau quick select 8 kota
+   - **Pull to Refresh**: Refresh semua data sekaligus
+
+**Interactive Features:**
+- User-generated content (markers, polylines, polygons, circles)
+- Real-time feedback dengan SnackBar
+- Console logging untuk setiap object yang dibuat
+- Counter di AppBar untuk tracking objects
+- Delete all buttons
+
+**Konsep yang Dipelajari:**
+- **Map Integration**: OpenStreetMap dengan flutter_map package
+- **Multi-API Integration**: Combine 3 different APIs (Weather, AQI, News)
+- **Location Services**: GPS location dengan geolocator
+- **Permission Handling**: Runtime permissions untuk location
+- **HTTP Requests**: REST API calls dengan http package
+- **State Management**: StatefulWidget dengan real-time updates
+- **Data Modeling**: JSON parsing dan model classes
+- **UI/UX**: Material 3 design, loading states, error handling
+
+**Teknologi:**
+- `flutter_map: ^7.0.2` - OpenStreetMap integration
+- `latlong2: ^0.9.1` - Latitude/Longitude handling
+- `geolocator: ^13.0.2` - GPS location services
+- `permission_handler: ^11.3.1` - Permission handling
+- `http: ^1.1.0` - HTTP requests
+- `url_launcher: ^6.2.0` - Open URLs in browser
+- `intl: ^0.19.0` - Date/time formatting
+- `shared_preferences: ^2.2.0` - Local storage
+
+**APIs Used:**
+- **OpenWeatherMap API**: Weather data (1,000 calls/day free)
+- **WAQI API**: Air quality index (1,000 requests/minute free)
+- **NewsAPI.org**: Environmental news (100 requests/day free)
+
+**Setup Requirements:**
+- API keys untuk 3 services (OpenWeatherMap, WAQI, NewsAPI)
+- Location permissions (Android & iOS)
+- Internet connection
+- `lib/config/api_config.dart` untuk API keys configuration
+
+**Console Logging:**
+- Detailed logging untuk setiap marker, polyline, polygon, circle
+- API request/response logging
+- Coordinate tracking
+- Object counters
+
+**UI/UX Features:**
+- Material 3 design dengan responsive cards
+- Color-coded indicators untuk AQI
+- Loading states untuk setiap section
+- Error handling dengan retry
+- Indonesian localization
+- Pull to refresh functionality
+
+**Default Settings:**
+- Location: Medan, Indonesia (3.5952, 98.6722)
+- Language: Indonesian (id_ID)
+- Map Tiles: OpenStreetMap
 
 ## 📄 Lisensi
 
