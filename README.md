@@ -37,6 +37,12 @@ Repositori ini berisi kumpulan proyek Flutter yang dibuat sebagai bagian dari ke
   - Foreground Service dengan persistent notification
   - Inter-Process Communication (IPC)
   - State persistence dan recovery
+- `crud_app/` - CRUD operations dengan 4 implementasi berbeda
+  - Database CRUD (Multi Page & Single Page)
+  - API CRUD (Multi Page & Single Page)
+  - SQLite local storage
+  - REST API integration
+  - Form handling dan validation
 
 ## 🛠️ Persyaratan Sistem
 
@@ -161,6 +167,63 @@ Aplikasi demonstrasi background service di Flutter dengan 2 demo lengkap: Pomodo
 **Resources:**
 - [README.md](service/README.md) - Setup dan implementasi lengkap
 - [CHEAT_SHEET.md](service/CHEAT_SHEET.md) - Quick reference guide
+
+### 📊 CRUD App (`crud_app/`)
+Aplikasi Flutter yang mendemonstrasikan implementasi CRUD dengan 2 metode penyimpanan dan 2 pendekatan UI.
+
+**4 Implementasi CRUD:**
+
+1. **🗄️ Database CRUD - Multi Page**
+   - SQLite local storage
+   - Full screen form dengan 6+ fields
+   - Date picker, dropdown, radio buttons
+   - Form validation lengkap
+   - Offline functionality
+
+2. **📋 Database CRUD - Single Page**
+   - SQLite local storage
+   - Dialog form dengan 2-3 fields
+   - Quick input tanpa navigation
+   - Basic validation
+
+3. **☁️ API CRUD - Multi Page**
+   - REST API (JSONPlaceholder)
+   - Full screen form
+   - HTTP requests (GET, POST, PUT, DELETE)
+   - Loading & error handling
+   - Server sync
+
+4. **🌐 API CRUD - Single Page**
+   - REST API (JSONPlaceholder)
+   - Dialog form
+   - Quick updates
+   - Minimal UI complexity
+
+**Konsep yang Dipelajari:**
+- **CRUD Operations**: Create, Read, Update, Delete
+- **SQLite Database**: Local storage dengan sqflite
+- **REST API**: HTTP requests dengan http package
+- **State Management**: StatefulWidget dengan setState()
+- **Form Handling**: Validation dan user input
+- **Navigation Patterns**: Multi page vs Single page
+- **Error Handling**: Try-catch dan user feedback
+- **UI/UX States**: Loading, empty, error states
+
+**Perbandingan:**
+- **Multi Page vs Single Page**: Full form vs Dialog, Navigation vs No navigation
+- **Database vs API**: Offline vs Online, Local vs Server, Fast vs Network dependent
+
+**Teknologi:**
+- `sqflite: ^2.3.0` - SQLite database
+- `path_provider: ^2.1.1` - Database path
+- `http: ^1.1.0` - HTTP client
+- `intl: ^0.19.0` - Date formatting
+
+**Architecture:**
+- Layered architecture (UI → Service → Data)
+- Service pattern untuk business logic
+- Model classes dengan JSON serialization
+- Reusable widgets dan dialogs
 
 ## 📄 Lisensi
 
