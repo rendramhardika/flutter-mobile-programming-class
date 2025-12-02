@@ -25,6 +25,12 @@ Repositori ini berisi kumpulan proyek Flutter yang dibuat sebagai bagian dari ke
   - Validasi form
   - Notifikasi interaktif
   - Tema gelap/terang
+- `permission/` - Demonstrasi lengkap permission handling dengan UX best practices
+  - 7 jenis permissions (Camera, Microphone, Location, Photos, Contacts, Notifications, Calendar)
+  - Permission Rationale Dialog
+  - Real-time status indicators
+  - Settings redirect untuk permanently denied
+  - Service layer architecture
 
 ## 🛠️ Persyaratan Sistem
 
@@ -93,11 +99,28 @@ Aplikasi manajemen tugas dengan implementasi form yang lengkap.
 
 **Fitur Utama:**
 - Sistem autentikasi dengan validasi
-- Manajemen tugas (tambah, edit, hapus, tandai selesai)
+- Manajemen tugas (tambah, edit, hapah, tandai selesai)
 - Validasi form yang kuat
 - Notifikasi interaktif dengan SweetAlert
 - Tampilan responsif dengan tema gelap/terang
 - Progress tracking untuk setiap tugas
+
+### 🔐 Permission Demo (`permission/`)
+Aplikasi demonstrasi implementasi permission handling dengan UX best practices menggunakan `permission_handler` package.
+
+**Fitur Utama:**
+- **7 Jenis Permissions**: Camera, Microphone, Location, Photos, Contacts, Notifications, Calendar
+- **Permission Rationale Dialog**: Dialog yang menjelaskan mengapa permission diperlukan sebelum request
+- **Visual Status Indicators**: Badge dengan color coding untuk setiap permission state
+- **Settings Redirect**: Automatic redirect ke app settings untuk permanently denied permissions
+- **Service Layer Architecture**: Clean architecture dengan separation of concerns
+- **Real-time Updates**: Status permission update otomatis setelah user action
+- **Platform Support**: Konfigurasi lengkap untuk Android dan iOS
+
+**Teknologi:**
+- `permission_handler: ^11.3.1` - Runtime permission handling
+- Custom rationale dialog dengan Material Design
+- Reusable permission service dan widgets
 
 ## 📄 Lisensi
 
