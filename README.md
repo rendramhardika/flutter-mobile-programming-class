@@ -31,6 +31,12 @@ Repositori ini berisi kumpulan proyek Flutter yang dibuat sebagai bagian dari ke
   - Real-time status indicators
   - Settings redirect untuk permanently denied
   - Service layer architecture
+- `service/` - Background Service demo dengan 2 implementasi lengkap
+  - Pomodoro Timer dengan countdown di background
+  - Download Manager dengan progress tracking
+  - Foreground Service dengan persistent notification
+  - Inter-Process Communication (IPC)
+  - State persistence dan recovery
 
 ## 🛠️ Persyaratan Sistem
 
@@ -121,6 +127,40 @@ Aplikasi demonstrasi implementasi permission handling dengan UX best practices m
 - `permission_handler: ^11.3.1` - Runtime permission handling
 - Custom rationale dialog dengan Material Design
 - Reusable permission service dan widgets
+
+### 🔄 Background Service Demo (`service/`)
+Aplikasi demonstrasi background service di Flutter dengan 2 demo lengkap: Pomodoro Timer dan Download Manager.
+
+**Demo 1: Pomodoro Timer**
+- ⏱️ Timer presets (Pomodoro, Short Break, Long Break, Custom)
+- ▶️ Start/Pause/Reset controls
+- 🔔 Real-time notification updates
+- 🎯 Timer tetap berjalan saat app di-minimize
+- ⏰ Alert notification saat timer selesai
+
+**Demo 2: Download Manager**
+- 📥 Multiple file downloads dengan queue management
+- 📊 Progress tracking real-time di notification
+- ⏸️ Pause/Resume/Cancel downloads
+- 📦 Sample files (1MB, 10MB, 50MB)
+- ✅ Success/Error handling dengan retry logic
+
+**Konsep yang Dipelajari:**
+- **Background Service**: Service yang berjalan di isolate terpisah
+- **Foreground Service**: Service dengan persistent notification
+- **Inter-Process Communication (IPC)**: Komunikasi antara UI dan service
+- **Local Notifications**: Notifikasi dengan update real-time
+- **State Management**: Sinkronisasi state antara UI dan background
+- **Isolate & Concurrency**: Multi-threading di Dart
+
+**Teknologi:**
+- `flutter_background_service: ^5.0.10` - Background service core
+- `flutter_local_notifications: ^17.2.3` - Local notifications
+- `shared_preferences: ^2.3.2` - State persistence
+
+**Resources:**
+- [README.md](service/README.md) - Setup dan implementasi lengkap
+- [CHEAT_SHEET.md](service/CHEAT_SHEET.md) - Quick reference guide
 
 ## 📄 Lisensi
 
